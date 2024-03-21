@@ -1,0 +1,29 @@
+
+df_pipei_copy =df_pipei.copy();
+
+# iters= df_pipei.iloc[:10].iterrows()
+iters= df_pipei.iterrows()
+for index row in iters:
+    bankName = row[贷款银行]
+    bankCode = row[证券代码]
+    # 如果bankName是空串或者bankCod 是空串 那就 continue
+    if bankName== or bankCode==:
+        continue
+    # print(bankName:bankName)
+    res= findCloest(bankNamedf_zcpmfindBlankWithSameCode(bankCode))
+    if(len(res)==0):
+        continue
+    _name=res[id]
+    # print(f对应的银行:{_name})
+    df_pipei_copy.loc[index当前银行资产]=getBankInfo(bankNamedf_zcpm)[1]
+    #修改 df_pipei_copy 的 index 行为 [...rowres[0]res[1]]
+    df_pipei_copy.loc[index最近银行]=_name
+    df_pipei_copy.loc[index最近银行资产]=res[资产]
+    info = findByBlankNameInPipei(_name)
+    if len(info)==0:
+        print(f在配置表里 没有找到银行 [{_name}] 的信息)
+        continue
+    # print(info)
+    df_pipei_copy.loc[index最近银行代码]= info[2]
+print(f前十名 {df_pipei_copy[:10]})
+exportExcel(df_pipei_copy)
